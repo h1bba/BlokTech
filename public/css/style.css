@@ -1,0 +1,86 @@
+:root {
+  --color-white: #fff;
+  --color-stylepink: #fb2576;
+  --color-stylepurple: #3f0071;
+  --color-black: #131313;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+}
+
+p {
+  color: black;
+  font-family: "Poppins", sans-serif;
+}
+
+.swipeContainer {
+  left: 0%;
+  margin: auto;
+  max-width: 20em;
+}
+
+.swipeButtons {
+  display: flex;
+  left: 0;
+  margin: auto;
+  max-width: 18em;
+  justify-content: space-between;
+  padding-top: 1.5em;
+  padding-bottom: 1em;
+}
+
+.swipeButtons img {
+  max-width: 3em;
+}
+
+.swipeImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20em;
+  height: auto;
+  border-radius: 2em;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 1em 2em 1em 2em;
+  margin: 0;
+  background-color: var(--color-white);
+}
+
+.logoImage {
+  width: 8em;
+  height: auto;
+}
+
+.FooterContainer {
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  height: 5em;
+  background-color: var(--color-stylepink);
+}
+
+.FooterIcons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.FooterIcons img {
+  margin-top: 1em;
+  max-width: 3em;
+}
