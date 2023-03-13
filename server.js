@@ -53,6 +53,22 @@ app.get("/liked", async (req, res) => {
   }
 });
 
+//
+
+app.put("/profiles/:id", async (req, res) => {
+  try {
+    const profile = await Profile.findById(req.params.id);
+    profile.liked = false;
+    await profile.save();
+    res.send("Profile updated successfully");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//
+
 app.get("/header", (req, res) => {
   res.render("header.ejs", {
     data: {

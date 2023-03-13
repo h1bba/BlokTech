@@ -21,9 +21,9 @@
           <td><%= likes.name %></td>
           <td><%= likes.age %></td>
           <td>
-            <a
-              ><img class="LikedListIcon" src="/public/images/SkipIcon.png"
-            /></a>
+            <a onclick="updateProfileLiked('<%= likes._id %>')">
+              <img class="LikedListIcon" src="/public/images/SkipIcon.png" />
+            </a>
           </td>
           <td>
             <a
@@ -36,5 +36,20 @@
     </section>
 
     <footer><%- include('./footer'); %></footer>
+
+    <script>
+      function updateProfileLiked(id) {
+        fetch(`/profiles/${id}`, {
+          method: "PUT",
+        })
+          .then((res) => res.text())
+          .then((data) => {
+            console.log(data);
+            // Reload the page to update the list of liked profiles
+            window.location.reload();
+          })
+          .catch((err) => console.error(err));
+      }
+    </script>
   </body>
 </html>
