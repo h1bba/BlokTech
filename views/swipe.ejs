@@ -1,6 +1,9 @@
-<section class="swipeContainer">
-  <img class="swipeImage" src="/public/images/placeholder.jpg" />
-  <h2><%= %></h2>
+<section class="swiper-wrapper">
+  <!-- <img class="swipeImage" src="/public/images/placeholder.jpg" /> -->
+  <% unlikedProfiles.forEach((profile) => { %>
+  <img src="<%= unlikedProfiles.pic %>" alt="<%= unlikedProfiles.name %>" />
+  <h2><%= unlikedProfiles.name %>, <%= unlikedProfiles.age %></h2>
+  <% }); %>
 
   <section class="swipeButtons">
     <a><img src="/public/images/SkipIcon.png" /></a>

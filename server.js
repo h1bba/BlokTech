@@ -43,7 +43,9 @@ app.get("/", (req, res) => {
 
 app.get("/liked", async (req, res) => {
   try {
-    const likes = await Profile.find({ liked: true });
+    const likes = await Profile.find({
+      liked: true
+    });
     res.render("liked.ejs", {
       likesList: likes,
     });
@@ -55,15 +57,20 @@ app.get("/liked", async (req, res) => {
 
 //
 
-app.put("/profiles/:id", async (req, res) => {
+app.get('/unlike/:id', async (req, res) => {
   try {
-    const profile = await Profile.findById(req.params.id);
-    profile.liked = false;
-    await profile.save();
-    res.send("Profile updated successfully");
+    const id = req.params.id;
+    const profile = await Profile.findByIdAndUpdate(id, {
+      liked: false
+    }, {
+      new: true
+    });
+    res.redirect('/liked');
   } catch (err) {
     console.error(err);
-    res.status(500).send("Internal Server Error");
+    res.status(500).json({
+      error: 'Internal Server Error'
+    });
   }
 });
 
@@ -93,12 +100,18 @@ app.get("/index", (req, res) => {
   });
 });
 
-app.get("/swipe", (req, res) => {
-  res.render("swipe.ejs", {
-    data: {
-      port,
-    },
-  });
+app.get('/swipe', async (req, res) => {
+  try {
+    const unlikedProfiles = await Profile.find({
+      liked: false
+    });
+    res.render('swipe.ejs', {
+      unlikedProfiles
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 app.get("/form", (req, res) => {
