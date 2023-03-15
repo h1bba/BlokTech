@@ -46,7 +46,6 @@ table {
   border-spacing: 0 1em;
 }
 
-
 .tdLike {
   color: var(--color-white);
   font-family: "Poppins", sans-serif;
@@ -170,4 +169,39 @@ header {
 .ProfilePicture {
   width: 4em;
   border-radius: 2em;
+}
+
+.containerChat {
+  border: 0.2em solid var(--color-stylepink);
+  background-color: var(--color-white);
+  border-radius: 0.5em;
+  padding: 1em;
+  margin: 1em 0.5em;
+  width: 80%;
+}
+
+.containerInput {
+  justify-content: center;
+  position: fixed;
+  display: flex;
+  bottom: 12%;
+  width: 90%;
+}
+
+.inputClass {
+  width: 100%;
+  height: 3em;
+  font-size: 1em;
+  border: 0.1em solid var(--color-stylepink);
+}
+
+.InputCenter {
+  margin-left: 1.2em;
+}
+
+.sendButton {
+  background-color: var(--color-stylepink);
+  border: none;
+  font-size: 1em;
+  color: var(--color-white);
 }

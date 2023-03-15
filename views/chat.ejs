@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<header><%- include('./header'); %></header>
+
+<section class="containerChat">
+  <p>Ufuk Argun, TEC1</p>
+  <span class="time-right">13:37</span>
+</section>
+
+<section class="InputCenter">
+  <form class="containerInput">
+    <input
+      id="messageInput"
+      type="text"
+      class="inputClass"
+      placeholder="Enter your message..."
+    />
+    <button type="submit" class="sendButton">Send</button>
+  </form>
+</section>
+
+<%- include('./footer'); %>

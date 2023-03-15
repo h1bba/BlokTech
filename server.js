@@ -40,22 +40,23 @@ app.get("/liked", async (req, res) => {
     });
     res.render("liked.ejs", {
       likesList: likes,
-      active: active
+      active: active,
     });
   } catch (err) {
     console.error(err);
     res.status(500).send("Internal Server Error");
   }
 });
-//
 
 app.get("/like/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const profile = await Profile.findByIdAndUpdate(
-      id, {
+      id,
+      {
         liked: false,
-      }, {
+      },
+      {
         new: true,
       }
     );
@@ -72,9 +73,11 @@ app.get("/unlike/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const profile = await Profile.findByIdAndUpdate(
-      id, {
+      id,
+      {
         liked: true,
-      }, {
+      },
+      {
         new: false,
       }
     );
@@ -105,6 +108,14 @@ app.get("/footer", (req, res) => {
   });
 });
 
+app.get("/chat", (req, res) => {
+  const active = "chat";
+
+  res.render("chat.ejs", {
+    active: active,
+  });
+});
+
 app.get("/index", async (req, res) => {
   const active = "home";
   try {
@@ -113,7 +124,7 @@ app.get("/index", async (req, res) => {
     });
     res.render("index.ejs", {
       likesList: likes,
-      active: active
+      active: active,
     });
   } catch (err) {
     console.error(err);
