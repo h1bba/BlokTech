@@ -1,7 +1,12 @@
 <footer class="FooterContainer">
   <section class="FooterIcons">
-    <a href="liked"><img src="/public/images/LikedIcon.png" /></a>
-    <a href="index"><img src="/public/images/ProfileIcon.png" /></a>
-    <a href="#"><img src="/public/images/ChatIcon.png" /></a>
+    <table class="tableFooter">
+      <td class="<%= active === 'liked' ? 'active' : 'inactive' %>"><a href="liked"><img
+            src="/public/images/LikedIconWit.png" /></a></td>
+      <td class="<%= active === 'home' ? 'active' : 'inactive' %>"><a href="index"><img
+            src="/public/images/ProfileIconWit.png" /></a></td>
+      <td class="<%= active === 'chat' ? 'active' : 'inactive' %>"><a href="#"><img
+            src="/public/images/ChatIconWit.png" /></a></td>
+    </table>
   </section>
 </footer>

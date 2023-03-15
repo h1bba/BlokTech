@@ -18,15 +18,6 @@ app.use("*/images", express.static("public/images"));
 
 app.set("view engine", "ejs");
 
-const profiles = new Profiles({
-  name: "Anne",
-  age: "21",
-  pic: "",
-  likeback: true,
-});
-
-// profiles.save();
-
 const profilesSchema = {
   name: String,
   age: String,
@@ -38,38 +29,56 @@ const profilesSchema = {
 const Profile = mongoose.model("Profile", profilesSchema);
 
 app.get("/", (req, res) => {
-  res.send(profiles);
+  res.redirect("/index");
 });
 
 app.get("/liked", async (req, res) => {
+  const active = "liked";
   try {
     const likes = await Profile.find({
       liked: true,
     });
     res.render("liked.ejs", {
       likesList: likes,
+      active: active
     });
   } catch (err) {
     console.error(err);
     res.status(500).send("Internal Server Error");
   }
 });
-
 //
+
+app.get("/like/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const profile = await Profile.findByIdAndUpdate(
+      id, {
+        liked: false,
+      }, {
+        new: true,
+      }
+    );
+    res.redirect("/liked");
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      error: "Internal Server Error",
+    });
+  }
+});
 
 app.get("/unlike/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const profile = await Profile.findByIdAndUpdate(
-      id,
-      {
-        liked: false,
-      },
-      {
-        new: true,
+      id, {
+        liked: true,
+      }, {
+        new: false,
       }
     );
-    res.redirect("/liked");
+    res.redirect("/");
   } catch (err) {
     console.error(err);
     res.status(500).json({
@@ -97,12 +106,14 @@ app.get("/footer", (req, res) => {
 });
 
 app.get("/index", async (req, res) => {
+  const active = "home";
   try {
     const likes = await Profile.find({
       liked: false,
     });
     res.render("index.ejs", {
       likesList: likes,
+      active: active
     });
   } catch (err) {
     console.error(err);

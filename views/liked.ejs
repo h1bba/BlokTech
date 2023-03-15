@@ -15,26 +15,29 @@
 <body>
   <header><%- include('./header'); %></header>
   <h1 class="CenterText">Liked profiles</h1>
+  <% if (likesList.length === 0) { %>
+  <p class="CenterText">You haven't liked any profiles, you can like profiles <a href="/index">here</a></p>
+  <% } else { %>
+
   <section class="LikedListContainer">
     <table class="TableSpacing">
       <%likesList.forEach(likes => {%>
-      <tr>
-        <td><%= likes.name %></td>
-        <td><%= likes.age %></td>
-        <td>
-          <a href="/unlike/<%= likes._id %>"><img class="LikedListIcon" src="/public/images/SkipIcon.png" /></a>
+      <tr class="trLike">
+        <td class="tdLike"><img class="ProfilePicture" src='/public/images/<%= likes.name %>.jpg' /></td>
+        <td class="tdLike"><%= likes.name %>,
+          <%= likes.age %></td>
+        <td class="tdLike">
+          <a href="/like/<%= likes._id %>"><img class="LikedListIcon" src="/public/images/SkipIcon.png" /></a>
         </td>
-        </td>
-        </td>
-        <td>
+        <td class="tdLike">
           <a><img class="LikedListIcon" src="/public/images/ChatIcon.png" /></a>
         </td>
       </tr>
       <%})%>
     </table>
   </section>
-
-  <footer><%- include('./footer'); %></footer>
+  <% } %>
+  <%- include('./footer'); %>
 
 </body>
 
