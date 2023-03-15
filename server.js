@@ -5,10 +5,7 @@ const app = express();
 const port = process.env.PORT || 8000;
 const uri = process.env.MONGODB_URI;
 
-const ejs = require("ejs");
-
 const mongoose = require("mongoose");
-const Profiles = require("./models/profiles");
 mongoose.set("strictQuery", false);
 
 app.use(express.static("public"));
@@ -52,11 +49,9 @@ app.get("/like/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const profile = await Profile.findByIdAndUpdate(
-      id,
-      {
+      id, {
         liked: false,
-      },
-      {
+      }, {
         new: true,
       }
     );
@@ -73,11 +68,9 @@ app.get("/unlike/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const profile = await Profile.findByIdAndUpdate(
-      id,
-      {
+      id, {
         liked: true,
-      },
-      {
+      }, {
         new: false,
       }
     );
