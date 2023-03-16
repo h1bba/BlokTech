@@ -43,13 +43,13 @@ git clone https://github.com/HibbaYT/BlokTech.git
 npm i express mongodb mongoose ejs dotenv
 ```
 
-**_NOTE:_** [Nodemon](https://www.npmjs.com/package//nodemon) is een eventuele handige module, zorg dat je deze installeert als Dev Dependency door de volgende commando.
+    **_NOTE:_** [Nodemon](https://www.npmjs.com/package//nodemon) is een eventuele handige module, zorg dat je deze installeert als Dev Dependency door de volgende commando.
 
 ```
 npm install --save-dev nodemon
 ```
 
-**_NOTE:_** Ook kan [Nodemon](https://www.npmjs.com/package//nodemon) hem globaal installeren zodat je het niet meer voor andere projecten hoeft te doen
+    **_NOTE:_** Ook kan [Nodemon](https://www.npmjs.com/package//nodemon) hem globaal installeren zodat je het niet meer voor andere projecten hoeft te doen
 
 ```
 npm install -g nodemon
@@ -62,13 +62,19 @@ MONGODB_URI= connection_string
 PORT= de port die je wilt gebruiken
 ```
 
-**_NOTE:_** Zorg dat je .gitignore bestand je env niet upload.
+    **_NOTE:_** Zorg dat je .gitignore bestand je env niet upload.
 
 9. Start de lokale webserver door de volgende commando te typen:
 
 ```
 npm start
 ```
+
+10. Open je browser en voer het volgende adres in: **http://localhost:port/**
+
+    **_NOTE:_** de port is hier niet aangegeven omdat je deze in de .env hebt gedefinieerd.
+
+DinnerMatch is ready to use!
 
 ## Licentie
 
