@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 require("dotenv").config();
 const express = require("express");
 const app = express();
@@ -67,6 +68,7 @@ app.get("/like/:id", async (req, res) => {
 app.get("/unlike/:id", async (req, res) => {
   try {
     const id = req.params.id;
+    // eslint-disable-next-line no-unused-vars
     const profile = await Profile.findByIdAndUpdate(
       id, {
         liked: true,
