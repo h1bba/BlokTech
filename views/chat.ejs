@@ -7,25 +7,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/css/style.css" />
 
-  <title>Document</title>
+  <title>Chat</title>
 </head>
 
-<body></body>
+<body>
+
+  <header><%- include('./header'); %></header>
+
+  <section class="pickupContainer" style="display:none;">
+    <p><span class="bold">Pickup suggestion:</span>
+      <%= data.pickup %>
+    </p>
+    <button class="pickupBtn" onclick="location.reload()">Refresh</button>
+    <button class=" pickupBtn" onclick="hidePickupContainer()">Close</button>
+  </section>
+
+  <section class="containerChat">
+    <p>Ufuk Argun, TEC1</p>
+    <span class="time-right">13:37</span>
+  </section>
+
+  <section class="InputCenter">
+    <form class="containerInput">
+      <input id="messageInput" type="text" class="inputClass" placeholder="Enter your message..." />
+      <button type="submit" class="sendButton">Send</button>
+    </form>
+  </section>
+
+  <%- include('./footer'); %>
+
+  <script>
+    // Show pickupContainer section if JavaScript is enabled
+    document.addEventListener("DOMContentLoaded", function (event) {
+      document.querySelector('.pickupContainer').style.display = "block";
+    });
+
+    // Hide pickupContainer section when close button is clicked
+    function hidePickupContainer() {
+      document.querySelector('.pickupContainer').style.display = "none";
+    }
+  </script>
+
+</body>
 
 </html>
-
-<header><%- include('./header'); %></header>
-
-<section class="containerChat">
-  <p>Ufuk Argun, TEC1</p>
-  <span class="time-right">13:37</span>
-</section>
-
-<section class="InputCenter">
-  <form class="containerInput">
-    <input id="messageInput" type="text" class="inputClass" placeholder="Enter your message..." />
-    <button type="submit" class="sendButton">Send</button>
-  </form>
-</section>
-
-<%- include('./footer'); %>

@@ -5,6 +5,8 @@ const app = express();
 
 const port = process.env.PORT || 8000;
 const uri = process.env.MONGODB_URI;
+const axios = require('axios');
+
 
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
@@ -15,6 +17,7 @@ app.use("*/upload", express.static("public/upload"));
 app.use("*/images", express.static("public/images"));
 
 app.set("view engine", "ejs");
+
 
 const profilesSchema = {
   name: String,
@@ -103,12 +106,23 @@ app.get("/footer", (req, res) => {
   });
 });
 
-app.get("/chat", (req, res) => {
+app.get("/chat", async (req, res) => {
   const active = "chat";
 
-  res.render("chat.ejs", {
-    active: active,
-  });
+  try {
+    const response = await axios.get('https://vinuxd.vercel.app/api/pickup');
+    const data = response.data;
+    res.render("chat.ejs", {
+      data: data,
+      active: active,
+    });
+    console.log(data)
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error: 'Internal Server Error'
+    });
+  }
 });
 
 app.get("/index", async (req, res) => {

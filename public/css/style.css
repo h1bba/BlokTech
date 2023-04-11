@@ -4,6 +4,8 @@
   --color-stylepurple: #3f0071;
   --color-black: #131313;
   --color-shadow: rgba(0, 0, 0, 0.5);
+  --color-tint: #dbdbdb;
+
 }
 
 body {
@@ -145,6 +147,28 @@ header {
 
 .inactive {
   background-color: var(--color-stylepink);
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.pickupBtn {
+  margin: 0.2em;
+  padding: 0.4em;
+  background-color: var(--color-white);
+  border: none;
+}
+
+.pickupContainer {
+  margin: 1em;
+  text-align: center;
+  max-width: 80%;
+  position: relative;
+  margin: 0 auto;
+  padding: 1em;
+  background-color: var(--color-tint);
+  border-radius: 1em;
 }
 
 .CenterText {
